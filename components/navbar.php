@@ -12,8 +12,8 @@
         <ul class="navbar-nav ms-auto">
             <!-- Daftar Menu -->
             <li class="nav-item">
-                <a class="nav-link" href="menu.php">
-                    <i class="bi bi-card-list"></i> Daftar Menu
+                <a class="nav-link" href="order.php">
+                    <i class="bi bi-cart-plus"></i> Pesan
                 </a>
             </li>
             <!-- Keranjang -->
