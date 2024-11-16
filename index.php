@@ -1,4 +1,7 @@
-<?php include './db.php' ?>
+<?php
+session_start();
+
+include './config.php' ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -17,7 +20,7 @@
     <!-- menambahkan navbar yang ada di folder components/navbar.php menggunakan include -->
     <?php include './components/navbar.php'; ?>
 
-    <section class="l">
+    <section class="">
         <!-- Section: Hero -->
         <section class="hero bg-light text-center py-5">
             <div class="container">
@@ -45,8 +48,47 @@
         <!-- include daftar-menu  -->
         <?php include './components/daftar-menu.php'; ?>
 
-        <!-- include komentar -->
-        <?php include './components/komentar.php' ?>
+        <section id="comments" class="comments-section bg-light py-5">
+            <div class="container">
+                <h2 class="text-center">Komentar</h2>
+                <p>Apa kata pelanggan kami tentang risol mayo yang lezat ini?</p>
+
+                <!-- List Komentar -->
+                <div class="comments-list mt-4">
+                    <?php
+                    include 'config.php';
+                    $result = $conn->query("SELECT * FROM comments ORDER BY created_at DESC");
+
+                    if ($result->num_rows > 0) {
+                        while ($row = $result->fetch_assoc()) {
+                            echo "<div class='comment mb-4 p-3 border rounded'>";
+                            echo "<h5>" . htmlspecialchars($row['username']) . " <small class='text-muted'>- " . htmlspecialchars($row['created_at']) . "</small></h5>";
+                            echo "<p class='mb-0'>" . htmlspecialchars($row['comment']) . "</p>";
+                            echo "</div>";
+                        }
+                    } else {
+                        echo "<p>Belum ada komentar. Jadilah yang pertama!</p>";
+                    }
+                    ?>
+                </div>
+
+                <!-- Form Tambah Komentar Baru -->
+                <div class="comment-form mt-5">
+                    <?php if (isset($_SESSION['user_id'])): ?>
+                        <h4 class="text-center">Tambah Komentar</h4>
+                        <form action="actions/comment-process.php" method="POST">
+                            <div class="mb-3">
+                                <label for="comment" class="form-label">Komentar</label>
+                                <textarea class="form-control" id="comment" name="comment" rows="3" placeholder="Tuliskan komentar Anda" required></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-primary"><i class="bi bi-send"></i> Kirim Komentar</button>
+                        </form>
+                    <?php else: ?>
+                        <p class="text-center text-danger">Anda harus <a href="login.php">login</a> untuk menambahkan komentar.</p>
+                    <?php endif; ?>
+                </div>
+            </div>
+        </section>
 
     </section>
 
