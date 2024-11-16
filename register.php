@@ -9,14 +9,14 @@
     <link rel="stylesheet" href="./assets/bootstrap-icons/font/bootstrap-icons.min.css">
     <!-- bootstrap end -->
     <link rel="stylesheet" href="./assets/css/style.css">
-    <title>Risol Mayo Hub - Pusat untuk berbagai varian risol mayo.</title>
+    <title>Daftar Akun</title>
 </head>
 
 <body>
     <!-- menambahkan navbar yang ada di folder components/navbar.php menggunakan include -->
     <?php include './components/navbar.php'; ?>
 
-    <section class="register-section py-5">
+    <section class="vh-100 py-5">
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-md-6">
