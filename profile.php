@@ -19,7 +19,7 @@ $email = $_SESSION['email'];
     <link rel="stylesheet" href="./assets/bootstrap-icons/font/bootstrap-icons.min.css">
     <!-- bootstrap end -->
     <link rel="stylesheet" href="./assets/css/style.css">
-    <title>Risol Mayo Hub - Pusat untuk berbagai varian risol mayo.</title>
+    <title>Profil Anda</title>
 </head>
 
 <body>
